@@ -1,9 +1,9 @@
 @extends('layouts.admin')
 @section('content')
-<div class="container-fluid px-4">
+                    <div class="container-fluid px-4">
                         <div class="my-4">
                             <h1 class="mt-4 d-inline">Items</h1>
-                            <a href="" class="btn btn-primary float-end">Create Item</a>
+                            <a href="{{route('backend.items.create')}}" class="btn btn-primary float-end">Create Item</a>
                         </div>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
