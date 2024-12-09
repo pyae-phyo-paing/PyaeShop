@@ -21,7 +21,7 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>CodeNo.</th>
-                                            <th>Name</th>
+                                            <th>Item Name</th>
                                             <th>Price</th>
                                             <th>Instock</th>
                                             <th>Category</th>
@@ -32,7 +32,7 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>CodeNo.</th>
-                                            <th>Name</th>
+                                            <th>Item Name</th>
                                             <th>Price</th>
                                             <th>Instock</th>
                                             <th>Category</th>
