@@ -6,7 +6,7 @@
                             <a href="{{route('backend.items.create')}}" class="btn btn-primary float-end">Create Item</a>
                         </div>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
                             <li class="breadcrumb-item active">Items</li>
                         </ol>
                         

@@ -6,7 +6,7 @@
                             <a href="" class="btn btn-danger float-end">Cancel</a>
                         </div>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
                             <li class="breadcrumb-item"><a href="{{route('backend.items.index')}}">Items</a></li>
                             <li class="breadcrumb-item active">Item Create</li>
                         </ol>
