@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Item;
 use App\Models\Category;
+use App\Http\Requests\ItemRequest;
 
 class ItemController extends Controller
 {
@@ -30,10 +31,20 @@ class ItemController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
         // dd($request);
         $items = Item::create($request->all());
+        
+        // file Upload
+        $file_name = time().'.'.$request->image->extension(); //12222224334.png
+
+        $upload = $request->image->move(public_path('images/items/'),$file_name); //file folder ထဲကို ထည့်တာ
+
+        if($upload){
+            $items->image = "/images/items/".$file_name; //ဒါက items ထဲက image colum ထဲကို images folder ထဲက items folder ထဲက file name ကို ထည့်တာ database ထဲကို ထည့်တာ
+        }
+
         $items->save();
 
         return redirect()->route('backend.items.index');
