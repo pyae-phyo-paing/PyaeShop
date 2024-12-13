@@ -21,11 +21,17 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Category Name</label>
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name">
+                    @error('name')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
+                    @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
                 </div>
                 
                 <button type="submit" class="btn btn-primary w-100">Save</button>
