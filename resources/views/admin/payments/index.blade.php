@@ -45,7 +45,7 @@
                             <td><img src="{{$payment->logo}}" alt="" width="50px" height="50px"></td>
                             <td>
                                 <a href="" class="btn btn-sm btn-warning">Edit</a>
-                                <a href="" class="btn btn-sm btn-danger">Delete</a>
+                                <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$payment->id}}">Delete</button>
                             </td>
                         </tr>
                     @endforeach
@@ -55,4 +55,16 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('tbody').on('click','.delete',function(){
+                alert('Are you Sure?');
+                let id = $(this).data('id');
+                console.log(id);
+                
+            })
+        })
+    </script>
 @endsection

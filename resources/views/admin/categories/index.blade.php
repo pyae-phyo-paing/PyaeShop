@@ -44,7 +44,7 @@
                             <td><img src="{{$category->image}}" alt="" width="70px" height="70px"></td>
                             <td>
                                 <a href="" class="btn  btn-warning">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <button type="button" class="btn btn-danger delete" data-id="{{$category->id}}">Delete</button>
                             </td>
                         </tr>
 
@@ -55,4 +55,15 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function(){
+            $('tbody').on('click','.delete',function(){
+                alert('Are you sure?')
+                let id = $(this).data('id');
+                console.log(id);
+            })
+        })
+    </script>
 @endsection
