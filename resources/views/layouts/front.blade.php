@@ -49,6 +49,15 @@
                             {{Auth::user()->name}}
                         </a>
                         <ul class="dropdown-menu">
+                            @if(Auth::user()->role == 'User')
+                            <li>
+                                <a href="" class="dropdown-item">Profile</a>
+                            </li>
+                            @else
+                            <li>
+                                <a href="/backend" class="dropdown-item">Admin Panel</a>
+                            </li>
+                            @endif
                             <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
