@@ -29,8 +29,14 @@
                                     </div>
                                 </div>
                                 <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{route('shop-item',$item->id)}}">View options</a></div>
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent row">
+                                    <div class="col col-4">
+                                        <div class="text-center"><a class="btn btn-sm btn-outline-dark mt-auto" href="{{route('shop-item',$item->id)}}">Detail</a></div>
+                                    </div>
+                                    <div class="col col-8">
+                                        <input type="hidden" name="" class="qty" value="1">
+                                        <a href="" class="btn btn-sm btn-dark addToCart" data-id="{{$item->id}}" data-name="{{$item->name}}" data-name="{{$item->name}}" data-image="{{$item->image}}" data-price="{{$item->price}}" data-discount="{{$item->discount}}">Add To Cart</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
