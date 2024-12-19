@@ -23,9 +23,14 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <h5 class="fw-bolder">{{$item->name}}</h5>
-                                        <!-- Product price-->
-                                        {{$item->price}}MMK
+                                        
+                                            @if($item->discount > 0)
+                                                <span class="text-decoration-line-through">{{$item->price}}</span>
+                                                {{$item->price - ($item->price*($item->discount/100))}} MMK
+                                            @else
+                                                {{$item->price}} MMK
+                                            @endif
+                    
                                     </div>
                                 </div>
                                 <!-- Product actions-->

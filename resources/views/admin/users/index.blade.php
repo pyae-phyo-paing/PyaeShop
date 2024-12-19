@@ -4,7 +4,7 @@
 <div class="container-fluid px-4">
     <div class="my-4">
         <h1 class="mt-4 d-inline">Users</h1>
-        <a href="{{route('backend.items.create')}}" class="btn btn-primary float-end">Create User</a>
+        <a href="{{route('backend.users.create')}}" class="btn btn-primary float-end">Create User</a>
     </div>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
