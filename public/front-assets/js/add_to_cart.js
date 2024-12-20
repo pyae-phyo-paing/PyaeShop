@@ -68,18 +68,20 @@ $(document).ready(function(){
                 table += `<tr>
                             <td>${j++}</td>
                             <td>${v.name}</td>
+                            <td><img src="${v.image}" width="50px"></td>
                             <td>${v.price}</td>
-                            <td><button style="margin-right:10px; padding:5px 5px 5px; font-size:20px;" class="max" data-key="${i}">+</button>${v.qty}<button style="margin-left:10px; padding:5px 5px 5px;font-size:20px;" class="min" data-key="${i}">-</button></td>
-                            <td>${v.price * v.qty}</td>
+                            <td>${v.discount}</td>
+                            <td><button style="margin-right:10px; padding:5px 5px 5px; font-size:20px;" class="btn btn-sm btn-outline-secondary max" data-key="${i}">+</button>${v.qty}<button style="margin-left:10px; padding:5px 5px 5px;font-size:20px;" class="btn btn-sm btn-outline-secondary min" data-key="${i}">-</button></td>
+                            <td>${Math.round((v.price - (v.price*(v.discount/100)))*v.qty)} MMK</td>
                           </tr>`
                 
-                totalPrice += v.price * v.qty;
+                totalPrice += Math.round((v.price - (v.price*(v.discount/100)))*v.qty); //Math.round() က ဒသမ ဖျောက်တာ
 
             })
 
             table += `<tr>
-                        <th colspan="4">Total</th>
-                        <td>${totalPrice}</td>
+                        <th colspan="6">Total</th>
+                        <td>${totalPrice} MMK</td>
                       </tr>`
 
             $('#mytable').html(table);

@@ -19,4 +19,9 @@ class FrontController extends Controller
         $item = Item::find($id);
         return view('front.shop-item',compact('item'));
     }
+
+    public function carts() 
+    {
+        return view('front.carts');
+    }
 }

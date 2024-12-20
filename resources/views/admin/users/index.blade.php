@@ -53,7 +53,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->role}}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{route('backend.users.edit',$user->id)}}" class="btn btn-sm btn-warning">Edit</a>
                                 <button type="button" class="btn btn-sm btn-danger delete" data-id="{{$user->id}}">Delete</button>
                             </td>
                         </tr>
@@ -64,6 +64,29 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-light">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h2>Are you sure delete?</h2>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <form action="" method="post" id="deleteform">
+            @csrf 
+            @method('delete')
+            <button type="submit" class="btn btn-primary">Yes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 @endsection
 @section('script')
     <script>
@@ -72,8 +95,9 @@
                 // alert('Hello');
                 let id = $(this).data('id');
                 // console.log(id);
+                $('#deleteModal').modal('show');
                 
-                
+                $('#deleteform').attr('action',`users/${id}`);
             })
         })
     </script>
