@@ -4,7 +4,7 @@
 <div class="container-fluid px-4">
     <div class="my-3">
         <h1 class="mt-4 d-inline">Edit User</h1>
-        <a href="" class="btn btn-danger float-end">Cancel</a>
+        <a href="{{route('backend.users.index')}}" class="btn btn-danger float-end">Cancel</a>
     </div>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="{{route('backend.dashboard')}}">Dashboard</a></li>
@@ -19,6 +19,7 @@
         <div class="card-body">
             <form action="{{route('backend.users.update',$user->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
+                @method('put')
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{$user->name}}">
@@ -43,10 +44,14 @@
                         </li>
                     </ul>
                         <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
-                        <div class="tab-pane fade" id="new_profile-tab-pane" role="tabpanel" aria-labelledby="new_profile-tab" tabindex="0">...</div>
+                        <div class="tab-pane fade show active" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                            <img src="{{$user->profile}}" alt="" class="w-25 h-25 my-3">
+                            <input type="hidden" name="old_profile" id="" value="{{$user->profile}}">
+                        </div>
+                        <div class="tab-pane fade" id="new_profile-tab-pane" role="tabpanel" aria-labelledby="new_profile-tab" tabindex="0">
+                        <input type="file" class="form-control my-3 @error('profile') is-invalid @enderror" id="profile" name="profile" accept="image/*" value="{{old('profile')}}">
+                        </div>
                 </div>
-                    <input type="file" class="form-control @error('profile') is-invalid @enderror" id="profile" name="profile" accept="image/*" value="{{old('profile')}}">
                     @error('profile')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
+use App\Models\Payment;
 
 class FrontController extends Controller
 {
@@ -22,6 +23,11 @@ class FrontController extends Controller
 
     public function carts() 
     {
-        return view('front.carts');
+        $payments = Payment::all();
+        return view('front.carts',compact('payments'));
+    }
+
+    public function orderNow(Request $request){
+        echo "$request->data";
     }
 }

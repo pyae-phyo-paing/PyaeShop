@@ -6,6 +6,7 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Shop Homepage - Start Bootstrap Template</title>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -88,5 +89,6 @@
          <script src="{{asset('front-assets/jquery/jquery-3.7.1.min.js')}}"></script>
          <!-- Add to Cart -->
           <script src="{{asset('front-assets/js/add_to_cart.js')}}"></script>
+          @yield('script')
     </body>
 </html>
