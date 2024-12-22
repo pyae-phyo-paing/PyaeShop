@@ -41,7 +41,11 @@
                         @endforeach
                     </select>
                 </div>
-                <button class="btn btn-success my-3" type="button" id="order-now">Order Now</button>
+                <div class="col-md-12">
+                    <label for="note">Note</label>
+                    <textarea name="note" id="" class="form-control"></textarea>
+                </div>
+                <button class="btn btn-success my-3" type="submit" id="order-now">Order Now</button>
             </form>
         @endif
     </div>
@@ -57,14 +61,44 @@
                 }
             });
 
-            $('#order-now').click(function(){
+            // $('#order-now').click(function(){
+            //     let itemString = localStorage.getItem('shops');
+            //     $.post("{{route('orderNow')}}",{data:itemString},function(response){
+            //         console.log(response);
+            //     })  //$.post က အပေါ်က ajaxကို သုံးထားလို့ တစ်ခါတည်း localstorage ထဲကို ထည့်လိုက်တာ အဲ့အတွက်ကြောင့် $.post ကို သုံးတာ
+            //         //console.log ထုတ်မယ်ဆိုရင် အပေါ်က button က submit မဖြစ်စေပါနဲ့
+            //         //shops ဆိုတာက ဟိုဘက်က add_to_cart.js ထဲက shops ကို သွားယူထားတာ
+            // })
+
+            $('#paymentForm').on('submit',function(e){
+                e.preventDefault();
+                var formData = new FormData(this);
+                console.log(formData);
+
                 let itemString = localStorage.getItem('shops');
-                $.post("{{route('orderNow')}}",{data:itemString},function(response){
-                    console.log(response);
-                })  //$.post က အပေါ်က ajaxကို သုံးထားလို့ တစ်ခါတည်း localstorage ထဲကို ထည့်လိုက်တာ အဲ့အတွက်ကြောင့် $.post ကို သုံးတာ
-                    //console.log ထုတ်မယ်ဆိုရင် အပေါ်က button က submit မဖြစ်စေပါနဲ့
-                    //shops ဆိုတာက ဟိုဘက်က add_to_cart.js ထဲက shops ကို သွားယူထားတာ
+                formData.append('orderItems',itemString);
+                //processData: false,
+                //contentType: false,
+                //ဒီနှစ်ခုက Form Data သယ်ဖို့
+
+                $.ajax({
+                    type: 'POST',
+                    url: "{{route('orderNow')}}", //ဒီroute က frontController က orderNow function ကို ညွှန်းတာ
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response){
+                        console.log(response);
+                        
+                        if(response){
+                            alert('Order Successful');
+                            localStorage.clear('shops');
+                            location.href = '/';
+                        }
+                    }
+                })
             })
+
         })
     </script>
 @endsection

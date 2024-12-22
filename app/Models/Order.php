@@ -22,4 +22,25 @@ class Order extends Model
         'payment_id',
         'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class);  //$this ဆိုတာက အပေါ်က model name item ကို ပြန်ခေါ်တာ
+        //belongsTo ဆိုတာ ရှိကိုရှိရမယ် 
+        //Category Model က ဘာလို့ use မလုပ်ရတာလဲဆိုတော့ item.php နဲ့ category.php က တစ်တန်းတည်းမှာရှိလို့
+        //Join တယ်လို့ ခေါ်တယ် ဒီ function က laravel.com မှာ relationship ဆိုပြီး ခေါ်ပြီး ရှာလို့ရတယ်
+    }
+
+    public function payment(){
+        return $this->belongsTo(Payment::class);  //$this ဆိုတာက အပေါ်က model name item ကို ပြန်ခေါ်တာ
+        //belongsTo ဆိုတာ ရှိကိုရှိရမယ် 
+        //Category Model က ဘာလို့ use မလုပ်ရတာလဲဆိုတော့ item.php နဲ့ category.php က တစ်တန်းတည်းမှာရှိလို့
+        //Join တယ်လို့ ခေါ်တယ် ဒီ function က laravel.com မှာ relationship ဆိုပြီး ခေါ်ပြီး ရှာလို့ရတယ်
+    }
+
+    public function item(){
+        return $this->belongsTo(Item::class);  //$this ဆိုတာက အပေါ်က model name item ကို ပြန်ခေါ်တာ
+        //belongsTo ဆိုတာ ရှိကိုရှိရမယ် 
+        //Category Model က ဘာလို့ use မလုပ်ရတာလဲဆိုတော့ item.php နဲ့ category.php က တစ်တန်းတည်းမှာရှိလို့
+        //Join တယ်လို့ ခေါ်တယ် ဒီ function က laravel.com မှာ relationship ဆိုပြီး ခေါ်ပြီး ရှာလို့ရတယ်
+    }
 }

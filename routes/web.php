@@ -16,6 +16,9 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::resource('categories',App\Http\Controllers\Admin\CategoryController::class);
     Route::resource('payments',App\Http\Controllers\Admin\PaymentController::class);
     Route::resource('users',App\Http\Controllers\Admin\UserController::class);
+    Route::get('orders',[App\Http\Controllers\Admin\OrderController::class, 'orders'])->name('orders');
+    Route::get('orderAccept',[App\Http\Controllers\Admin\OrderController::class, 'orderAccept'])->name('orderAccept');
+    Route::get('orderComplete',[App\Http\Controllers\Admin\OrderController::class, 'orderComplete'])->name('orderComplete');
 });
 
 Auth::routes();
