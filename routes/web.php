@@ -19,6 +19,7 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::get('orders',[App\Http\Controllers\Admin\OrderController::class, 'orders'])->name('orders');
     Route::get('orderAccept',[App\Http\Controllers\Admin\OrderController::class, 'orderAccept'])->name('orderAccept');
     Route::get('orderComplete',[App\Http\Controllers\Admin\OrderController::class, 'orderComplete'])->name('orderComplete');
+    Route::get('orders/{voucher}',[App\Http\Controllers\Admin\OrderController::class, 'orderDetail'])->name('orders.detail');
 });
 
 Auth::routes();

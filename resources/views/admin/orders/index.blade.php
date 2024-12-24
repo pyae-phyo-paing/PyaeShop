@@ -4,9 +4,9 @@
     <div class="my-3">
         <h1 class="mt-4 d-inline">Orders</h1>
         
-        <a href="{{route('backend.orderComplete')}}" class="btn btn-success mx-3 float-end">Order Complete List</a>
-        <a href="{{route('backend.orderAccept')}}" class="btn btn-success mx-3 float-end">Order Accept List</a>
-        <a href="{{route('backend.orders')}}" class="btn btn-success mx-3 float-end">Order List</a>
+        <a href="{{route('backend.orderComplete')}}" class="btn btn-primary mx-2 float-end">Order Complete List</a>
+        <a href="{{route('backend.orderAccept')}}" class="btn btn-success mx-2 float-end">Order Accept List</a>
+        <a href="{{route('backend.orders')}}" class="btn btn-secondary mx-2 float-end">Order List</a>
     </div>
     <div class="card mb-4">
         <div class="card-header">
@@ -42,6 +42,7 @@
 
                     @foreach($order_data as $order)
 
+                        @if($order != null)
                         <tr>
                             <td>{{$i++}}</td>
                             <td>{{$order->voucher_no}}</td>
@@ -51,9 +52,10 @@
                                 <img src="{{$order->payment->logo}}" alt="" width="50" height="50">
                             </td>
                             <td>
-                                <a href="" class="btn btn-sm btn-primary">Detail</a>
+                                <a href="{{route('backend.orders.detail',$order->voucher_no)}}" class="btn btn-sm btn-primary">Detail</a>
                             </td>
                         </tr>
+                        @endif
 
                     @endforeach
                 </tbody>
