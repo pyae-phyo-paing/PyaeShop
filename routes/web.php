@@ -20,6 +20,7 @@ Route::group(['middleware'=>['auth','role:Super Admin|Admin'],'prefix'=>'backend
     Route::get('orderAccept',[App\Http\Controllers\Admin\OrderController::class, 'orderAccept'])->name('orderAccept');
     Route::get('orderComplete',[App\Http\Controllers\Admin\OrderController::class, 'orderComplete'])->name('orderComplete');
     Route::get('orders/{voucher}',[App\Http\Controllers\Admin\OrderController::class, 'orderDetail'])->name('orders.detail');
+    Route::put('orders/{voucher}',[App\Http\Controllers\Admin\OrderController::class, 'status'])->name('orders.status');
 });
 
 Auth::routes();

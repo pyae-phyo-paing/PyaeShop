@@ -2,7 +2,15 @@
 @section('content')
 <div class="container-fluid px-4">
     <div class="my-3">
-        <h1 class="mt-4 d-inline">Orders</h1>
+        <h1 class="mt-4 d-inline">
+            @if(Request::is('backend/orderAccept'))
+             Order Accept
+            @elseif(Request::is('backend/orderComplete'))
+             Order Complete
+            @else
+                Order List
+            @endif
+        </h1>
         
         <a href="{{route('backend.orderComplete')}}" class="btn btn-primary mx-2 float-end">Order Complete List</a>
         <a href="{{route('backend.orderAccept')}}" class="btn btn-success mx-2 float-end">Order Accept List</a>
@@ -47,7 +55,16 @@
                             <td>{{$i++}}</td>
                             <td>{{$order->voucher_no}}</td>
                             <td>{{$order->user->name}}</td>
-                            <td>{{$order->status}}</td>
+                            <td>
+                                <span class="badge @if($order->status == 'Pending')
+                                {{'text-bg-secondary'}}
+                                @elseif($order->status == 'Accept')
+                                {{'text-bg-primary'}}
+                                @else
+                                {{'text-bg-success'}}
+                                @endif
+                                ">{{$order->status}}</span>
+                            </td>
                             <td>
                                 <img src="{{$order->payment->logo}}" alt="" width="50" height="50">
                             </td>
