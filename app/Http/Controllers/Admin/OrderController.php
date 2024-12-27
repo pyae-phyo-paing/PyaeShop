@@ -13,7 +13,7 @@ class OrderController extends Controller
         // var_dump($orders);
         $voucher_group = $orders->groupBy('voucher_no')->toArray(); //voucher no တူတာတွေကို Group ဖွဲပြီး Array ပြောင်း
         // dd($voucher_group);
-
+        $order_data = [];
         foreach($voucher_group as $voucher){
             $orders_id = array_column($voucher, 'id'); //array ထဲမှာ ရှိတဲ့ order id တွေကို ယူ 
             // var_dump($orders_id);
@@ -27,6 +27,7 @@ class OrderController extends Controller
     public function orderAccept(){
         $orders = Order::all(); 
         $voucher_group = $orders->groupBy('voucher_no')->toArray(); 
+        $order_data = [];
         foreach($voucher_group as $voucher){
             $orders_id = array_column($voucher, 'id'); 
             $order_data[] = Order::whereIn('id',$orders_id)->where('status','Accept')->first();
@@ -38,6 +39,7 @@ class OrderController extends Controller
     public function orderComplete() {
         $orders = Order::all(); 
         $voucher_group = $orders->groupBy('voucher_no')->toArray(); 
+        $order_data = [];
         foreach($voucher_group as $voucher){
             $orders_id = array_column($voucher, 'id'); 
             $order_data[] = Order::whereIn('id',$orders_id)->where('status','Complete')->first();
